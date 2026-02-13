@@ -1,39 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
     <title>Aetherion | Login Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
+    <div class="box">
+        <h2>UCP Login</h2>
         <input type="text" id="ucp" placeholder="Username UCP">
         <input type="password" id="pass" placeholder="Password">
-        <button onclick="gasLogin()">Login</button>
-        <p id="info"></p>
+        <button onclick="prosesLogin()">Masuk</button>
+        <p id="pesan"></p>
     </div>
 
-    <script>
-        async function gasLogin() {
-            const ucp = document.getElementById('ucp').value;
-            const password = document.getElementById('pass').value;
-            const info = document.getElementById('info');
-
-            const res = await fetch('/api/login', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ ucp, password })
-            });
-
-            const data = await res.json();
-            if(data.success) {
-                localStorage.setItem('ucp_session', ucp);
-                alert("Login Sukses!");
-                window.location.href = "/dashboard.html"; 
-            } else {
-                info.innerText = data.message;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
