@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>SAMP Login Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetherion | Portal Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="bg-overlay"></div>
     <div class="login-card">
-        <h2>UCP LOGIN</h2>
-        <input type="text" id="ucp" placeholder="Username UCP">
-        <input type="password" id="pass" placeholder="Password">
+        <div class="logo-container">
+            <img src="src/logo.png" alt="Aetherion Logo" class="server-logo">
+        </div>
         
-        <button id="loginBtn" onclick="gasLogin()">MASUK</button>
+        <h2>LOGIN</h2>
+        <p class="sub-text">Silakan masukkan identitas UCP Anda</p>
+
+        <div class="input-group">
+            <input type="text" id="ucp" placeholder="Username UCP" spellcheck="false">
+            <input type="password" id="pass" placeholder="Password">
+        </div>
+
+        <button onclick="gasLogin()" id="loginBtn">
+            <span class="txt">MASUK</span>
+            <div id="loader" class="spinner" style="display: none;"></div>
+        </button>
         
         <p id="msg"></p>
+        
+        <div class="footer-links">
+            <a href="https://discord.gg/DM7MRXCw6A" target="_blank">Lupa Password?</a>
+        </div>
     </div>
 
     <script src="script.js"></script>
