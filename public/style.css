@@ -1,49 +1,31 @@
-/* public/style.css */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0f0f0f; /* Background gelap khas gamer */
-    color: #ffffff;
+    background: #121212;
+    color: white;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
 }
-
 .login-card {
-    background: #1a1a1a;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    width: 350px;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 8px;
+    width: 320px;
     text-align: center;
-    border-top: 5px solid #f39c12; /* Warna oranye SAMP */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
-
-h2 {
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
 input {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin: 10px 0;
-    border-radius: 6px;
-    border: 1px solid #333;
-    background: #252525;
+    border: none;
+    background: #333;
     color: white;
+    border-radius: 4px;
     box-sizing: border-box;
-    transition: 0.3s;
 }
-
-input:focus {
-    border-color: #f39c12;
-    outline: none;
-}
-
 button {
     width: 100%;
     padding: 12px;
@@ -51,22 +33,7 @@ button {
     border: none;
     color: white;
     font-weight: bold;
-    border-radius: 6px;
     cursor: pointer;
-    margin-top: 15px;
-    transition: 0.3s;
+    border-radius: 4px;
 }
-
-button:hover {
-    background: #e67e22;
-    transform: translateY(-2px);
-}
-
-#msg {
-    margin-top: 15px;
-    font-size: 14px;
-    min-height: 20px;
-}
-
-.error { color: #e74c3c; }
-.success { color: #2ecc71; }
+button:hover { background: #d35400; }

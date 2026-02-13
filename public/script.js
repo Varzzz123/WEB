@@ -5,20 +5,19 @@ window.onload = () => {
 };
 
 async function gasLogin() {
-    console.log("Fungsi jalan...");
+    console.log("Fungsi gasLogin dipanggil...");
     
     const ucp = document.getElementById('ucp').value;
     const password = document.getElementById('pass').value;
     const msg = document.getElementById('msg');
 
     if (!ucp || !password) {
-        alert("Woi, isi dulu!"); // Buat ngetes respon tombol
         msg.innerText = "Isi dulu UCP dan Password!";
         msg.style.color = "red";
         return;
     }
 
-    msg.innerText = "Menghubungkan...";
+    msg.innerText = "Menghubungkan ke API...";
     msg.style.color = "orange";
 
     try {
@@ -29,16 +28,17 @@ async function gasLogin() {
         });
 
         const data = await res.json();
+        
         if (data.success) {
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userUCP', ucp);
             window.location.href = 'dashboard.html';
         } else {
-            msg.innerText = data.message;
+            msg.innerText = data.message || "Login gagal!";
             msg.style.color = "red";
         }
     } catch (err) {
-        msg.innerText = "Gagal konek ke server!";
-        console.error(err);
+        msg.innerText = "Gagal konek ke API server!";
+        console.error("Fetch Error:", err);
     }
 }

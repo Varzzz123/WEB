@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aetherion | Login Page</title>
+    <title>SAMP Login Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="box">
-        <h2>UCP Login</h2>
+    <div class="login-card">
+        <h2>UCP LOGIN</h2>
         <input type="text" id="ucp" placeholder="Username UCP">
         <input type="password" id="pass" placeholder="Password">
-        <button onclick="gasLogin()">Masuk</button>
-        <p id="pesan"></p>
+        
+        <button id="loginBtn" onclick="gasLogin()">MASUK</button>
+        
+        <p id="msg"></p>
     </div>
 
     <script src="script.js"></script>
