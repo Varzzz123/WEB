@@ -5,18 +5,21 @@ window.onload = () => {
 };
 
 async function gasLogin() {
+    console.log("Fungsi jalan...");
+    
     const ucp = document.getElementById('ucp').value;
     const password = document.getElementById('pass').value;
     const msg = document.getElementById('msg');
 
     if (!ucp || !password) {
-        msg.innerText = "Isi dulu UCP ama Passwordnya!";
-        msg.className = "error";
+        alert("Woi, isi dulu!"); // Buat ngetes respon tombol
+        msg.innerText = "Isi dulu UCP dan Password!";
+        msg.style.color = "red";
         return;
     }
 
-    msg.innerText = "Connecting to Server...";
-    msg.className = "";
+    msg.innerText = "Menghubungkan...";
+    msg.style.color = "orange";
 
     try {
         const res = await fetch('/api/login', {
@@ -26,24 +29,16 @@ async function gasLogin() {
         });
 
         const data = await res.json();
-
         if (data.success) {
-            msg.innerText = "Berhasil! Mengalihkan...";
-            msg.className = "success";
-
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userUCP', ucp);
-
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+            window.location.href = 'dashboard.html';
         } else {
-            msg.innerText = data.message || "UCP atau Password salah!";
-            msg.className = "error";
+            msg.innerText = data.message;
+            msg.style.color = "red";
         }
-    } catch (error) {
-        msg.innerText = "Error: Gak bisa konek ke API!";
-        msg.className = "error";
-        console.error(error);
+    } catch (err) {
+        msg.innerText = "Gagal konek ke server!";
+        console.error(err);
     }
 }
