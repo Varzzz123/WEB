@@ -98,6 +98,21 @@ button:hover {
     box-shadow: 0 15px 30px rgba(243, 156, 18, 0.4);
 }
 
+.sub-text {
+    color: #e0e0e0;
+    font-size: 13px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(243, 156, 18, 0.4);
+    opacity: 0.9;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
 .spinner {
     width: 22px;
     height: 22px;
