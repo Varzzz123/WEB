@@ -1,22 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    /* Gradasi gelap (Deep Dark) biar logo emasnya kontras */
-    background: linear-gradient(-45deg, #000000, #0a0a0a, #1a1a1a, #000000);
+    background: linear-gradient(-45deg, #000, #0a0a0a, #1a1a1a, #000);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    display: flex; justify-content: center; align-items: center; min-height: 100vh; color: white;
 }
 
 @keyframes gradientBG {
@@ -26,155 +17,50 @@ body {
 }
 
 .login-card {
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(20px);
-    padding: 40px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    width: 100%;
-    max-width: 420px;
-    text-align: center;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 40px; border-radius: 25px; border: 1px solid rgba(243, 156, 18, 0.2);
+    width: 100%; max-width: 420px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
 }
 
-/* UKURAN LOGO DI SINI GUE GEDEIN */
-.server-logo {
-    width: 160px; /* Ukuran lebih gede sesuai request */
-    margin-bottom: 15px;
-    filter: drop-shadow(0 0 25px rgba(243, 156, 18, 0.7)); /* Glow emas makin kuat */
-    animation: pulse 4s infinite ease-in-out;
-}
+.server-logo { width: 150px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(243, 156, 18, 0.5)); }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); } /* Efek kembang kempis pelan */
-}
+h2 { color: #f39c12; letter-spacing: 2px; margin-bottom: 5px; }
 
-.login-card h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #f39c12; /* Warna emas */
-    font-size: 28px;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-}
+.sub-text { font-size: 12px; color: #ccc; text-shadow: 0 0 8px rgba(243, 156, 18, 0.4); margin-bottom: 25px; }
 
 input {
-    width: 100%;
-    padding: 16px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
+    width: 100%; padding: 14px; margin-bottom: 12px;
+    background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: white; outline: none; transition: 0.3s;
 }
 
-input:focus {
-    border-color: #f39c12;
-    box-shadow: 0 0 15px rgba(243, 156, 18, 0.3);
-}
+input:focus { border-color: #f39c12; }
 
 button {
-    width: 100%;
-    padding: 18px;
-    background: linear-gradient(45deg, #f39c12, #e67e22);
-    border: none;
-    color: #000;
-    font-weight: 700;
-    font-size: 15px;
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
+    width: 100%; padding: 15px; background: linear-gradient(45deg, #f39c12, #e67e22);
+    border: none; border-radius: 10px; color: #000; font-weight: 700;
+    cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px;
 }
 
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(243, 156, 18, 0.4);
-}
+button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3); }
 
-.sub-text {
-    color: #e0e0e0;
-    font-size: 13px;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-    font-weight: 300;
-    text-shadow: 0 0 10px rgba(243, 156, 18, 0.4);
-    opacity: 0.9;
-}
-
-.input-group {
-    position: relative;
-    margin-bottom: 25px;
-}
-
-.spinner {
-    width: 22px;
-    height: 22px;
-    border: 3px solid rgba(0,0,0,0.2);
-    border-top: 3px solid #000;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-#msg { margin-top: 20px; font-weight: 500; font-size: 14px; }
-
-.char-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 25px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding-right: 5px;
-}
-
-.char-container::-webkit-scrollbar { width: 5px; }
-.char-container::-webkit-scrollbar-thumb { background: #f39c12; border-radius: 10px; }
+.char-container { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
 
 .char-btn {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(243, 156, 18, 0.2) !important;
-    padding: 15px 20px !important;
-    border-radius: 15px !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    cursor: pointer;
-    transition: 0.3s all ease !important;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(243, 156, 18, 0.2);
+    padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s;
 }
 
-.char-btn:hover {
-    background: rgba(243, 156, 18, 0.1) !important;
-    border-color: #f39c12 !important;
-    transform: translateX(8px);
-    box-shadow: 0 0 15px rgba(243, 156, 18, 0.2);
-}
+.char-btn:hover { background: rgba(243, 156, 18, 0.1); border-color: #f39c12; transform: translateX(5px); }
 
 .char-info { text-align: left; }
+.char-info .name { display: block; font-weight: 700; color: #fff; font-size: 15px; }
+.char-info .stats { font-size: 11px; color: #f39c12; }
 
-.char-info .name {
-    display: block;
-    font-weight: 700;
-    font-size: 16px;
-    color: #fff;
-    letter-spacing: 1px;
-}
+.spinner { width: 18px; height: 18px; border: 3px solid rgba(0,0,0,0.2); border-top-color: #000; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.char-info .stats {
-    font-size: 12px;
-    color: #f39c12;
-    font-weight: 500;
-}
-
-.char-icon {
-    font-size: 20px;
-    opacity: 0.5;
-}
+.footer-links { margin-top: 25px; font-size: 11px; }
+.footer-links a { color: #666; text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: #f39c12; }

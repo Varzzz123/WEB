@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pilih Karakter | Aetherion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-card">
+        <img src="./src/logo.png" class="server-logo">
+        <h2>PILIH KARAKTER</h2>
+        <p class="sub-text" id="ucpInfo">Memuat UCP...</p>
+        <div id="charList" class="char-container">
+            <p style="color: #888;">Mencari karakter...</p>
+        </div>
+    </div>
+
+    <script>
+        const ucp = localStorage.getItem('userUCP');
+        if (!ucp) window.location.href = 'index.html';
+        document.getElementById('ucpInfo').innerText = "UCP: " + ucp;
+
+        async function fetchChars() {
+            try {
+                const res = await fetch(`/api/get-characters?ucp=${ucp}`);
+                const data = await res.json();
+                const list = document.getElementById('charList');
+                list.innerHTML = "";
+
+                if (data.success && data.characters.length > 0) {
+                    data.characters.forEach(c => {
+                        const btn = document.createElement('div');
+                        btn.className = 'char-btn';
+                        btn.innerHTML = `
+                            <div class="char-info">
+                                <span class="name">${c.username.replace('_', ' ')}</span>
+                                <span class="stats">Level ${c.level} • Skin ${c.skin}</span>
+                            </div>
+                            <span class="arrow">➜</span>
+                        `;
+                        btn.onclick = () => {
+                            localStorage.setItem('selectedChar', JSON.stringify(c));
+                            window.location.href = 'dashboard.html';
+                        };
+                        list.appendChild(btn);
+                    });
+                } else {
+                    list.innerHTML = "<p style='color:#ff4d4d'>Karakter tidak ditemukan!</p>";
+                }
+            } catch (e) {
+                list.innerHTML = "Error koneksi database!";
+            }
+        }
+        fetchChars();
+    </script>
+</body>
+</html>

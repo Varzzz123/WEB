@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <title>Dashboard | Aetherion</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .stat-box { background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(243, 156, 18, 0.1); text-align: left; }
+        .stat-box label { display: block; font-size: 10px; color: #f39c12; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-box span { font-size: 16px; font-weight: 700; color: #fff; }
+        .skin-img { width: 130px; filter: drop-shadow(0 0 15px rgba(243, 156, 18, 0.5)); margin-bottom: 10px; }
+    </style>
 </head>
-<body style="flex-direction: column;">
-    <div class="login-card" style="max-width: 800px;">
-        <h1>WELCOME DASHBOARD</h1>
-        <p id="charWelcome"></p>
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-        <button onclick="location.href='index.html'" style="width: auto; padding: 10px 30px;">LOGOUT</button>
+<body>
+    <div class="login-card" style="max-width: 500px;">
+        <div id="skinImg"></div>
+        <h2 id="charName">USERNAME</h2>
+        <p class="sub-text">Statistik Karakter Aetherion</p>
+
+        <div class="stats-grid">
+            <div class="stat-box"><label>Uang Tunai</label><span id="cMoney">$0</span></div>
+            <div class="stat-box"><label>Level</label><span id="cLevel">0</span></div>
+            <div class="stat-box"><label>Skin ID</label><span id="cSkin">0</span></div>
+            <div class="stat-box"><label>Kesehatan</label><span id="cHealth">100.0</span></div>
+        </div>
+
+        <button onclick="localStorage.clear(); window.location.href='index.html'" style="margin-top: 30px; background: #e74c3c; color: white;">LOGOUT</button>
     </div>
 
     <script>
-        const char = localStorage.getItem('selectedChar');
-        if(!char) window.location.href = 'index.html';
-        document.getElementById('charWelcome').innerText = "Selamat datang kembali, " + char.replace('_', ' ');
+        const char = JSON.parse(localStorage.getItem('selectedChar'));
+        if (!char) window.location.href = 'index.html';
+
+        document.getElementById('charName').innerText = char.username.replace('_', ' ');
+        document.getElementById('cMoney').innerText = '$' + char.money.toLocaleString();
+        document.getElementById('cLevel').innerText = char.level;
+        document.getElementById('cSkin').innerText = char.skin;
+        document.getElementById('cHealth').innerText = char.health;
+        
+        // Pake API Skin GTA
+        document.getElementById('skinImg').innerHTML = `<img src="https://night7.com/skins/${char.skin}.png" class="skin-img">`;
     </script>
 </body>
 </html>
