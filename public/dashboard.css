@@ -122,6 +122,21 @@ body {
     font-weight: 300;
 }
 
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: #f0f6fc;
+}
+
+.nav-logo {
+    height: 30px;
+    width: auto;
+    filter: drop-shadow(0 0 5px rgba(88, 166, 255, 0.5)); 
+}
+
 /* ==========================================
    MENU GRID
    ========================================== */
@@ -224,5 +239,9 @@ body {
 
     .menu-card {
         padding: 25px;
+    }
+
+    .brand span {
+        display: none;
     }
 }
