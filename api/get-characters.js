@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const db = await mysql.createConnection(process.env.DB_URL);
+        const db = await mysql.createConnection(process.env.DB_SAMP_URL);
         
         const [rows] = await db.execute(
             'SELECT username, level, skin, money FROM players WHERE ucp = ?', 
@@ -29,4 +29,5 @@ export default async function handler(req, res) {
             message: "Error DB: " + error.message 
         });
     }
+
 }
