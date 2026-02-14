@@ -1,124 +1,112 @@
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 .profile-bg {
-    background: #1a1a1a;
-    background-image: radial-gradient(circle at center, #222 0%, #000 100%);
+    background: #0d1117; /* Warna gelap GitHub */
+    background-image: radial-gradient(circle at center, #161b22 0%, #010409 100%);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+}
+
+/* Navbar Style GitHub */
+.gh-nav {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.brand { color: #f0f6fc; font-family: 'Orbitron', sans-serif; font-size: 14px; }
+.nav-right { display: flex; gap: 15px; align-items: center; }
+.nav-stat-chip {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+.chip-label { color: #8b949e; margin-right: 5px; }
+.green { color: #3fb950; font-weight: bold; }
+.gold { color: #d29922; font-weight: bold; }
+
+/* Main Container */
+.glass-container {
+    margin-top: 80px; /* Jarak dari Navbar */
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
 }
 
 .profile-wrapper {
     display: flex;
     align-items: center;
-    gap: 50px;
-    padding: 40px;
-    max-width: 1100px;
-    width: 100%;
-}
-
-.char-visual-section {
-    flex: 1;
-    position: relative;
-    display: flex;
     justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap; /* Auto naik-turun di HP */
 }
 
-.char-container { position: relative; }
+/* Character Pointers */
+.char-container { position: relative; display: inline-block; }
 .main-skin {
-    height: 500px;
-    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.2));
-    z-index: 2;
+    height: 450px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    z-index: 5;
+    position: relative;
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.4));
 }
 
-.pointer { position: absolute; color: white; white-space: nowrap; }
-.p-line { height: 1px; background: cyan; position: absolute; width: 60px; box-shadow: 0 0 10px cyan; }
+.pointer { position: absolute; display: flex; align-items: center; gap: 10px; color: #fff; font-family: 'Rajdhani', sans-serif; }
+.p-line { height: 2px; background: #00e5ff; box-shadow: 0 0 10px #00e5ff; width: 40px; }
 
-.p-head { top: 15%; right: -120px; }
-.p-head .p-line { top: 10px; left: -70px; transform: rotate(-30deg); }
+.p-head { top: 10%; right: -140px; }
+.p-torso { top: 40%; left: -140px; flex-direction: row-reverse; }
+.p-legs { bottom: 20%; right: -140px; }
+.p-label { font-size: 14px; font-weight: bold; text-transform: uppercase; }
+.p-label span { color: #00e5ff; }
 
-.p-torso { top: 45%; left: -140px; }
-.p-torso .p-line { top: 10px; right: -70px; transform: rotate(10deg); }
-
-.p-legs { bottom: 25%; right: -130px; }
-.p-legs .p-line { top: 10px; left: -70px; transform: rotate(30deg); }
-
-.p-label { font-size: 14px; text-transform: uppercase; font-weight: bold; }
-.p-label span { color: cyan; }
-
-/* SISI KANAN - STATS CARD */
+/* Stats Card */
 .stats-card-modern {
     flex: 1;
-    background: rgba(30, 30, 30, 0.85);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    min-width: 320px;
+    background: rgba(22, 27, 34, 0.8);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 35px;
 }
 
-.player-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 32px;
-    letter-spacing: 2px;
-    color: white;
-}
+.player-title { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 28px; }
+.cyan-divider { width: 60px; height: 4px; background: #00e5ff; margin: 15px 0 25px 0; }
 
-.cyan-divider {
-    width: 80px;
-    height: 4px;
-    background: #00e5ff;
-    margin: 15px 0 30px 0;
-}
+.stat-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 18px; color: #8b949e; }
+.stat-row .val { color: #fff; font-weight: bold; }
 
-.stat-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #ccc;
-}
-.stat-row .val { color: white; font-weight: bold; }
-
+/* Bars */
 .bar-item { margin-top: 20px; }
-.bar-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #aaa;
-    text-transform: uppercase;
-}
-.bar-bg { background: rgba(255,255,255,0.1); height: 6px; border-radius: 10px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 10px; transition: 1s ease; }
+.bar-info { display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; text-transform: uppercase; margin-bottom: 6px; }
+.bar-bg { background: #30363d; height: 8px; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; transition: 1s ease; border-radius: 10px; }
 .cyan { background: #00e5ff; box-shadow: 0 0 10px #00e5ff; }
-.yellow { background: #ffcc00; box-shadow: 0 0 10px #ffcc00; }
-.red { background: #ff3300; box-shadow: 0 0 10px #ff3300; }
-
-.last-online { margin-top: 30px; color: #666; font-size: 14px; }
+.yellow { background: #d29922; }
+.red { background: #f85149; }
 
 .view-btn {
-    margin-top: 30px;
-    width: 100%;
-    padding: 15px;
-    background: none;
-    border: 1px solid #00e5ff;
-    color: #00e5ff;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    width: 100%; margin-top: 30px; padding: 12px;
+    background: #21262d; border: 1px solid #30363d; color: #c9d1d9;
+    font-family: 'Orbitron', sans-serif; font-size: 12px; cursor: pointer; transition: 0.3s;
 }
-.view-btn:hover { background: #00e5ff; color: black; }
+.view-btn:hover { background: #30363d; border-color: #8b949e; }
 
-@media (max-width: 900px) {
-    .profile-wrapper {
-        flex-direction: column;
-        padding: 20px;
-    }
-    .main-skin { height: 350px; }
-    .pointer { display: none; }
-    .stats-card-modern { width: 100%; padding: 25px; }
-    .player-title { font-size: 24px; }
+@media (max-width: 768px) {
+    .profile-wrapper { flex-direction: column; gap: 30px; }
+    .pointer { display: none; } /* Matiin pointer di HP biar gak numpuk */
+    .main-skin { height: 300px; }
+    .gh-nav .nav-stat-chip { display: none; } /* Ringkas Navbar di HP */
 }
