@@ -2,36 +2,21 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard Player - Varz</title>
-    <style>
-        body { background: #121212; color: white; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .box { background: #1e1e1e; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: center; border-top: 5px solid #f39c12; }
-        h1 { color: #f39c12; }
-        .ucp-name { font-size: 24px; font-weight: bold; margin: 10px 0; color: #2ecc71; }
-        button { padding: 10px 20px; background: #e74c3c; border: none; color: white; border-radius: 5px; cursor: pointer; margin-top: 20px; }
-    </style>
+    <title>Dashboard | Aetherion</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="box">
-        <h1>Selamat Datang!</h1>
-        <p>Anda login sebagai UCP:</p>
-        <div class="ucp-name" id="userDisplay">...</div>
-        <hr>
-        <p>Status: <span style="color: #2ecc71;">Online di Website</span></p>
-        <button onclick="logout()">Keluar / Logout</button>
+<body style="flex-direction: column;">
+    <div class="login-card" style="max-width: 800px;">
+        <h1>WELCOME DASHBOARD</h1>
+        <p id="charWelcome"></p>
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+        <button onclick="location.href='index.html'" style="width: auto; padding: 10px 30px;">LOGOUT</button>
     </div>
 
     <script>
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = 'index.html';
-        }
-
-        document.getElementById('userDisplay').innerText = localStorage.getItem('userUCP');
-
-        function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
-        }
+        const char = localStorage.getItem('selectedChar');
+        if(!char) window.location.href = 'index.html';
+        document.getElementById('charWelcome').innerText = "Selamat datang kembali, " + char.replace('_', ' ');
     </script>
 </body>
 </html>

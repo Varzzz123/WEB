@@ -125,3 +125,56 @@ button:hover {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 #msg { margin-top: 20px; font-weight: 500; font-size: 14px; }
+
+.char-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.char-container::-webkit-scrollbar { width: 5px; }
+.char-container::-webkit-scrollbar-thumb { background: #f39c12; border-radius: 10px; }
+
+.char-btn {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(243, 156, 18, 0.2) !important;
+    padding: 15px 20px !important;
+    border-radius: 15px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    cursor: pointer;
+    transition: 0.3s all ease !important;
+}
+
+.char-btn:hover {
+    background: rgba(243, 156, 18, 0.1) !important;
+    border-color: #f39c12 !important;
+    transform: translateX(8px);
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.2);
+}
+
+.char-info { text-align: left; }
+
+.char-info .name {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.char-info .stats {
+    font-size: 12px;
+    color: #f39c12;
+    font-weight: 500;
+}
+
+.char-icon {
+    font-size: 20px;
+    opacity: 0.5;
+}
