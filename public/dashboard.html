@@ -2,44 +2,55 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard | Aetherion</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .stat-box { background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(243, 156, 18, 0.1); text-align: left; }
-        .stat-box label { display: block; font-size: 10px; color: #f39c12; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-box span { font-size: 16px; font-weight: 700; color: #fff; }
-        .skin-img { width: 130px; filter: drop-shadow(0 0 15px rgba(243, 156, 18, 0.5)); margin-bottom: 10px; }
-    </style>
+    <title>Aetherion | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="login-card" style="max-width: 500px;">
-        <div id="skinImg"></div>
-        <h2 id="charName">USERNAME</h2>
-        <p class="sub-text">Statistik Karakter Aetherion</p>
+    <div class="dashboard-wrapper">
+        <div class="stats-card">
+            <div class="dashboard-header">
+                <h2>STATISTICS</h2>
+                <button class="btn-logout" onclick="logout()">LOGOUT</button>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="char-preview">
+                    <img id="skinImg" src="" alt="Skin">
+                    <h3 id="displayName">Nama Karakter</h3>
+                    <p id="displayUcp" class="gold-text"></p>
+                </div>
 
-        <div class="stats-grid">
-            <div class="stat-box"><label>Uang Tunai</label><span id="cMoney">$0</span></div>
-            <div class="stat-box"><label>Level</label><span id="cLevel">0</span></div>
-            <div class="stat-box"><label>Skin ID</label><span id="cSkin">0</span></div>
-            <div class="stat-box"><label>Kesehatan</label><span id="cHealth">100.0</span></div>
+                <div class="stats-detail">
+                    <div class="stats-section">
+                        <h4 class="section-title">In Character</h4>
+                        <div class="stats-grid">
+                            <div class="item"><label>Gender</label><span id="sGender"></span></div>
+                            <div class="item"><label>Money</label><span id="sMoney" class="green-text"></span></div>
+                            <div class="item"><label>Bank</label><span id="sBank" class="green-text"></span></div>
+                            <div class="item"><label>Rekening</label><span id="sRek"></span></div>
+                            <div class="item"><label>Phone</label><span id="sPhone"></span></div>
+                            <div class="item"><label>Birthdate</label><span id="sAge"></span></div>
+                            <div class="item"><label>Faction</label><span id="sFaction"></span></div>
+                            <div class="item"><label>Family</label><span id="sFamily"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="stats-section">
+                        <h4 class="section-title">Out of Character</h4>
+                        <div class="stats-grid">
+                            <div class="item"><label>UID</label><span id="sUid"></span></div>
+                            <div class="item"><label>Level Exp</label><span id="sLevelExp"></span></div>
+                            <div class="item"><label>Warnings</label><span id="sWarn"></span></div>
+                            <div class="item"><label>Gold Coin</label><span id="sGold"></span></div>
+                            <div class="item"><label>VIP Level</label><span id="sVip"></span></div>
+                            <div class="item"><label>Played Time</label><span id="sTime"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <button onclick="localStorage.clear(); window.location.href='index.html'" style="margin-top: 30px; background: #e74c3c; color: white;">LOGOUT</button>
     </div>
 
-    <script>
-        const char = JSON.parse(localStorage.getItem('selectedChar'));
-        if (!char) window.location.href = 'index.html';
-
-        document.getElementById('charName').innerText = char.username.replace('_', ' ');
-        document.getElementById('cMoney').innerText = '$' + char.money.toLocaleString();
-        document.getElementById('cLevel').innerText = char.level;
-        document.getElementById('cSkin').innerText = char.skin;
-        document.getElementById('cHealth').innerText = char.health;
-        
-        // Pake API Skin GTA
-        document.getElementById('skinImg').innerHTML = `<img src="https://night7.com/skins/${char.skin}.png" class="skin-img">`;
-    </script>
+    <script src="dashboard.js"></script>
 </body>
 </html>

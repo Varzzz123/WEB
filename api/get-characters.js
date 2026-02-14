@@ -7,7 +7,11 @@ export default async function handler(req, res) {
     try {
         const db = await mysql.createConnection(process.env.DB_SAMP_URL);
         const [rows] = await db.execute(
-            'SELECT username, level, skin, money, health FROM players WHERE ucp = ?', 
+            `SELECT username, money, bmoney, brek, phone, age, job, job2, 
+            faction, family, phonestatus, twittername, ucp, reg_id, level, 
+            levelup, email, warn, last_login, admin, helper, hours, minutes, 
+            seconds, gold, vip, vip_time, interior, world, reg_date, skin 
+            FROM players WHERE ucp = ?`, 
             [ucp.trim()]
         );
         await db.end();
