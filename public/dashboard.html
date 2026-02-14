@@ -3,89 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Aetherion</title>
+    <title>Player Profile | Aetherion</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="dashboard-container">
-        <div class="dash-header">
-            <div class="title-area">
-                <h2>STATISTICS</h2>
-                <div class="underline"></div>
-            </div>
-            <button class="logout-btn" onclick="logout()">LOGOUT</button>
-        </div>
-
-        <div class="dash-body">
-            <div class="profile-sidebar">
-                <div class="skin-card">
-                    <img id="skinImg" src="" alt="Skin">
-                </div>
-                <h3 id="charName">NAME_LOADING</h3>
-                <p id="charUCP" class="ucp-tag"></p>
-            </div>
-
-            <div class="stats-content">
-                <div class="stats-group">
-                    <h4 class="group-label">In Character</h4>
-                    <div class="stats-grid">
-                        <div class="stat-item"><label>Gender</label><span id="sGender">-</span></div>
-                        <div class="stat-item"><label>Money</label><span id="sMoney" class="green-text">$0</span></div>
-                        <div class="stat-item"><label>Bank</label><span id="sBank" class="green-text">$0</span></div>
-                        <div class="stat-item"><label>Rekening</label><span id="sRek">-</span></div>
-                        <div class="stat-item"><label>Phone</label><span id="sPhone">-</span></div>
-                        <div class="stat-item"><label>Birthdate</label><span id="sAge">-</span></div>
-                        <div class="stat-item"><label>Faction</label><span id="sFaction">-</span></div>
-                        <div class="stat-item"><label>Family</label><span id="sFamily">-</span></div>
+<body class="profile-bg">
+    <div class="glass-container">
+        <div class="profile-wrapper">
+            
+            <div class="char-visual-section">
+                <div class="char-container">
+                    <img id="skinImg" src="" alt="Skin" class="main-skin">
+                    
+                    <div class="pointer p-head">
+                        <div class="p-label">Headwear: <span id="pHead">None</span></div>
+                        <div class="p-line"></div>
                     </div>
-                </div>
-
-                <div class="stats-group">
-                    <h4 class="group-label">Out of Character</h4>
-                    <div class="stats-grid">
-                        <div class="stat-item"><label>UID</label><span id="sUid">-</span></div>
-                        <div class="stat-item"><label>Level Exp</label><span id="sExp">-</span></div>
-                        <div class="stat-item"><label>Warnings</label><span id="sWarn" class="red-text">0/20</span></div>
-                        <div class="stat-item"><label>Gold Coin</label><span id="sGold" class="gold-text">0</span></div>
-                        <div class="stat-item"><label>VIP Level</label><span id="sVip">-</span></div>
-                        <div class="stat-item"><label>Played Time</label><span id="sTime">-</span></div>
+                    <div class="pointer p-torso">
+                        <div class="p-label">Torso: <span id="pTorso">Standard</span></div>
+                        <div class="p-line"></div>
+                    </div>
+                    <div class="pointer p-legs">
+                        <div class="p-label">Legs: <span id="pLegs">Regular</span></div>
+                        <div class="p-line"></div>
                     </div>
                 </div>
             </div>
+
+            <div class="stats-card-modern">
+                <h1 class="player-title">PLAYER STATISTICS</h1>
+                <div class="cyan-divider"></div>
+
+                <div class="main-stats-list">
+                    <div class="stat-row">
+                        <span class="label">Level:</span>
+                        <span class="val" id="sLevel">1</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">XP:</span>
+                        <span class="val" id="sExp">0 / 0</span>
+                    </div>
+                    
+                    <div class="bar-item">
+                        <div class="bar-info"><span>Health</span> <span id="vHealth">100%</span></div>
+                        <div class="bar-bg"><div id="bHealth" class="bar-fill cyan" style="width: 100%"></div></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-info"><span>Stamina (Energy)</span> <span id="vEnergy">100%</span></div>
+                        <div class="bar-bg"><div id="bEnergy" class="bar-fill yellow" style="width: 100%"></div></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-info"><span>Stress</span> <span id="vStress">0%</span></div>
+                        <div class="bar-bg"><div id="bStress" class="bar-fill red" style="width: 0%"></div></div>
+                    </div>
+                </div>
+
+                <div class="last-online">Last Online: <span id="sLastLogin">Just Now</span></div>
+                
+                <button class="view-btn" onclick="logout()">LOGOUT SESSION</button>
+            </div>
+
         </div>
     </div>
 
-    <script>
-        const p = JSON.parse(localStorage.getItem('selectedChar'));
-        if (!p) window.location.href = 'index.html';
-
-        // Mapping Data
-        document.getElementById('charName').innerText = p.username.replace('_', ' ');
-        document.getElementById('charUCP').innerText = `UCP: ${p.ucp}`;
-        document.getElementById('skinImg').src = `https://night7.com/skins/${p.skin}.png`;
-
-        // IC
-        document.getElementById('sGender').innerText = (p.gender == 2) ? "Female" : "Male";
-        document.getElementById('sMoney').innerText = `$${p.money.toLocaleString()}`;
-        document.getElementById('sBank').innerText = `$${p.bmoney.toLocaleString()}`;
-        document.getElementById('sRek').innerText = p.brek;
-        document.getElementById('sPhone').innerText = p.phone || "None";
-        document.getElementById('sAge').innerText = p.age;
-        
-        const factions = { 1: "SAPD", 2: "SAGOV", 3: "SAMD", 4: "SANews" };
-        document.getElementById('sFaction').innerText = factions[p.faction] || "None";
-        document.getElementById('sFamily').innerText = (p.family != -1) ? `ID: ${p.family}` : "None";
-
-        // OOC
-        document.getElementById('sUid').innerText = p.reg_id;
-        document.getElementById('sExp').innerText = `${p.levelup}/${p.level * 8}`;
-        document.getElementById('sWarn').innerText = `${p.warn}/20`;
-        document.getElementById('sGold').innerText = p.gold;
-        document.getElementById('sVip').innerText = p.vip > 0 ? `Level ${p.vip}` : "None";
-        document.getElementById('sTime').innerText = `${p.hours}h ${p.minutes}m`;
-
-        function logout() { localStorage.clear(); window.location.href = 'index.html'; }
+    <script src="dashboard.js">
     </script>
 </body>
-
 </html>

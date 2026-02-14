@@ -1,110 +1,124 @@
-/* Container Utama */
-.dashboard-container {
-    width: 95%;
-    max-width: 1000px;
-    background: rgba(18, 18, 18, 0.95);
-    border: 1px solid rgba(243, 156, 18, 0.2);
-    border-radius: 20px;
-    padding: 25px;
-    margin: 20px auto;
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+
+.profile-bg {
+    background: #1a1a1a;
+    background-image: radial-gradient(circle at center, #222 0%, #000 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Header */
-.dash-header {
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 40px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.char-visual-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.char-container { position: relative; }
+.main-skin {
+    height: 500px;
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.2));
+    z-index: 2;
+}
+
+.pointer { position: absolute; color: white; white-space: nowrap; }
+.p-line { height: 1px; background: cyan; position: absolute; width: 60px; box-shadow: 0 0 10px cyan; }
+
+.p-head { top: 15%; right: -120px; }
+.p-head .p-line { top: 10px; left: -70px; transform: rotate(-30deg); }
+
+.p-torso { top: 45%; left: -140px; }
+.p-torso .p-line { top: 10px; right: -70px; transform: rotate(10deg); }
+
+.p-legs { bottom: 25%; right: -130px; }
+.p-legs .p-line { top: 10px; left: -70px; transform: rotate(30deg); }
+
+.p-label { font-size: 14px; text-transform: uppercase; font-weight: bold; }
+.p-label span { color: cyan; }
+
+/* SISI KANAN - STATS CARD */
+.stats-card-modern {
+    flex: 1;
+    background: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.player-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.cyan-divider {
+    width: 80px;
+    height: 4px;
+    background: #00e5ff;
+    margin: 15px 0 30px 0;
+}
+
+.stat-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ccc;
 }
-.title-area h2 { color: #f39c12; font-size: 24px; }
-.underline { width: 50px; height: 3px; background: #f39c12; }
+.stat-row .val { color: white; font-weight: bold; }
 
-/* Body Layout: Flexbox adalah kunci */
-.dash-body {
+.bar-item { margin-top: 20px; }
+.bar-info {
     display: flex;
-    gap: 30px;
-}
-
-/* Sidebar Profil */
-.profile-sidebar {
-    flex: 1;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 20px;
-    border-radius: 15px;
-    height: fit-content;
-}
-.skin-card img {
-    width: 180px;
-    filter: drop-shadow(0 0 15px rgba(243, 156, 18, 0.3));
-}
-.ucp-tag { color: #f39c12; font-size: 13px; font-weight: bold; margin-top: 5px; }
-
-/* Stats Area */
-.stats-content { flex: 2; }
-.group-label {
-    color: #f39c12;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #aaa;
     text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    border-left: 3px solid #f39c12;
-    padding-left: 10px;
 }
+.bar-bg { background: rgba(255,255,255,0.1); height: 6px; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 10px; transition: 1s ease; }
+.cyan { background: #00e5ff; box-shadow: 0 0 10px #00e5ff; }
+.yellow { background: #ffcc00; box-shadow: 0 0 10px #ffcc00; }
+.red { background: #ff3300; box-shadow: 0 0 10px #ff3300; }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Default 2 kolom */
-    gap: 12px;
-    margin-bottom: 25px;
-}
+.last-online { margin-top: 30px; color: #666; font-size: 14px; }
 
-.stat-item {
-    background: rgba(255, 255, 255, 0.04);
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-.stat-item label { display: block; font-size: 10px; color: #777; text-transform: uppercase; }
-.stat-item span { font-size: 14px; font-weight: 600; color: #eee; }
-
-/* Warna Spesifik */
-.green-text { color: #2ecc71 !important; }
-.gold-text { color: #f1c40f !important; }
-.red-text { color: #e74c3c !important; }
-
-/* Tombol Logout */
-.logout-btn {
-    background: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 8px;
+.view-btn {
+    margin-top: 30px;
+    width: 100%;
+    padding: 15px;
+    background: none;
+    border: 1px solid #00e5ff;
+    color: #00e5ff;
+    font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
+.view-btn:hover { background: #00e5ff; color: black; }
 
-/* ==========================================
-   RESPONSIVE UNTUK ANDROID / HP
-   ========================================== */
-@media (max-width: 768px) {
-    .dash-body {
-        flex-direction: column; /* Biar Naik-Turun (Sidebar jadi di atas) */
+@media (max-width: 900px) {
+    .profile-wrapper {
+        flex-direction: column;
+        padding: 20px;
     }
-
-    .stats-grid {
-        grid-template-columns: 1fr; /* Grid jadi 1 kolom biar lebar di HP */
-    }
-
-    .profile-sidebar {
-        margin-bottom: 10px;
-    }
-
-    .skin-card img {
-        width: 150px; /* Skin dikecilin dikit di HP */
-    }
-
-    .dashboard-container {
-        padding: 15px;
-    }
+    .main-skin { height: 350px; }
+    .pointer { display: none; }
+    .stats-card-modern { width: 100%; padding: 25px; }
+    .player-title { font-size: 24px; }
 }
