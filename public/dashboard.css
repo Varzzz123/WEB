@@ -1,58 +1,52 @@
-/* ... (Style login kemarin tetep pake) ... */
-
-.dashboard-wrapper {
-    width: 100%;
-    max-width: 900px;
-    margin: 20px;
-}
-
-.stats-card {
-    background: rgba(15, 15, 15, 0.9);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(243, 156, 18, 0.3);
+/* Container Utama */
+.dashboard-container {
+    width: 95%;
+    max-width: 1000px;
+    background: rgba(18, 18, 18, 0.95);
+    border: 1px solid rgba(243, 156, 18, 0.2);
     border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 25px;
+    margin: 20px auto;
 }
 
-.dashboard-header {
+/* Header */
+.dash-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
+.title-area h2 { color: #f39c12; font-size: 24px; }
+.underline { width: 50px; height: 3px; background: #f39c12; }
 
-.dashboard-content {
+/* Body Layout: Flexbox adalah kunci */
+.dash-body {
     display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
+    gap: 30px;
 }
 
-.char-preview {
+/* Sidebar Profil */
+.profile-sidebar {
     flex: 1;
-    min-width: 250px;
     text-align: center;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     padding: 20px;
     border-radius: 15px;
+    height: fit-content;
 }
-
-.skin-img {
-    width: 200px;
-    filter: drop-shadow(0 0 20px rgba(243, 156, 18, 0.4));
+.skin-card img {
+    width: 180px;
+    filter: drop-shadow(0 0 15px rgba(243, 156, 18, 0.3));
 }
+.ucp-tag { color: #f39c12; font-size: 13px; font-weight: bold; margin-top: 5px; }
 
-.stats-detail {
-    flex: 2;
-    min-width: 350px;
-}
-
-.section-title {
+/* Stats Area */
+.stats-content { flex: 2; }
+.group-label {
     color: #f39c12;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
+    letter-spacing: 2px;
     margin-bottom: 15px;
     border-left: 3px solid #f39c12;
     padding-left: 10px;
@@ -60,38 +54,57 @@
 
 .stats-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(2, 1fr); /* Default 2 kolom */
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
-.item {
-    background: rgba(255,255,255,0.05);
-    padding: 10px 15px;
-    border-radius: 8px;
+.stat-item {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
+.stat-item label { display: block; font-size: 10px; color: #777; text-transform: uppercase; }
+.stat-item span { font-size: 14px; font-weight: 600; color: #eee; }
 
-.item label {
-    display: block;
-    font-size: 10px;
-    color: #888;
-    text-transform: uppercase;
-}
+/* Warna Spesifik */
+.green-text { color: #2ecc71 !important; }
+.gold-text { color: #f1c40f !important; }
+.red-text { color: #e74c3c !important; }
 
-.item span {
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.gold-text { color: #f39c12; }
-.green-text { color: #2ecc71; }
-
-.btn-logout {
+/* Tombol Logout */
+.logout-btn {
     background: #e74c3c;
-    color: white;
+    color: #fff;
     border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 8px 18px;
+    border-radius: 8px;
     font-weight: bold;
+    cursor: pointer;
+}
+
+/* ==========================================
+   RESPONSIVE UNTUK ANDROID / HP
+   ========================================== */
+@media (max-width: 768px) {
+    .dash-body {
+        flex-direction: column; /* Biar Naik-Turun (Sidebar jadi di atas) */
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr; /* Grid jadi 1 kolom biar lebar di HP */
+    }
+
+    .profile-sidebar {
+        margin-bottom: 10px;
+    }
+
+    .skin-card img {
+        width: 150px; /* Skin dikecilin dikit di HP */
+    }
+
+    .dashboard-container {
+        padding: 15px;
+    }
 }
