@@ -3,87 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player Profile | Aetherion</title>
+    <title>Home | Aetherion Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="profile-bg">
+<body class="home-bg">
     <nav class="gh-nav">
         <div class="nav-left">
-            <span class="brand">AETHERION / <strong>DASHBOARD</strong></span>
+            <span class="brand">AETHERION / <strong>HOME</strong></span>
         </div>
         <div class="nav-right">
-            <div class="nav-stat-chip">
-                <span class="chip-label">CASH:</span>
-                <span class="chip-val green" id="navMoney">$0</span>
-            </div>
-            <div class="nav-stat-chip">
-                <span class="chip-label">GOLD:</span>
-                <span class="chip-val gold" id="navGold">0</span>
-            </div>
-            <div class="user-profile-mini">
-                <span id="navUCP">UCP_NAME</span>
-            </div>
+            <div class="nav-stat-chip"><span class="chip-label">CASH:</span> <span class="chip-val green" id="navMoney">$0</span></div>
+            <div class="user-profile-mini"><span id="navUCP">UCP_NAME</span></div>
+            <button class="logout-mini" onclick="logout()">LOGOUT</button>
         </div>
     </nav>
 
-    <div class="glass-container">
-        <div class="profile-wrapper">
-            
-            <div class="char-visual-section">
-                <div class="char-container">
-                    <img id="skinImg" src="" alt="Skin" class="main-skin">
-                    
-                    <div class="pointer p-head">
-                        <div class="p-label">Head: <span id="pHead">None</span></div>
-                        <div class="p-line"></div>
-                    </div>
-                    <div class="pointer p-torso">
-                        <div class="p-line"></div>
-                        <div class="p-label">Torso: <span id="pTorso">Standard</span></div>
-                    </div>
-                    <div class="pointer p-legs">
-                        <div class="p-label">Legs: <span id="pLegs">Regular</span></div>
-                        <div class="p-line"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stats-card-modern">
-                <h1 class="player-title">PLAYER STATISTICS</h1>
-                <div class="cyan-divider"></div>
-
-                <div class="main-stats-list">
-                    <div class="stat-row">
-                        <span class="label">Level:</span>
-                        <span class="val" id="sLevel">1</span>
-                    </div>
-                    <div class="stat-row">
-                        <span class="label">XP:</span>
-                        <span class="val" id="sExp">0 / 0</span>
-                    </div>
-                    
-                    <div class="bar-item">
-                        <div class="bar-info"><span>Health</span> <span id="vHealth">100%</span></div>
-                        <div class="bar-bg"><div id="bHealth" class="bar-fill cyan"></div></div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-info"><span>Stamina</span> <span id="vEnergy">100%</span></div>
-                        <div class="bar-bg"><div id="bEnergy" class="bar-fill yellow"></div></div>
-                    </div>
-                    <div class="bar-item">
-                        <div class="bar-info"><span>Stress</span> <span id="vStress">0%</span></div>
-                        <div class="bar-bg"><div id="bStress" class="bar-fill red"></div></div>
-                    </div>
-                </div>
-
-                <div class="last-online">Last Sync: <span id="sLastLogin">Just Now</span></div>
-                
-                <button class="view-btn" onclick="logout()">LOGOUT SESSION</button>
-            </div>
-
+    <main class="home-wrapper">
+        <div class="welcome-section">
+            <h1 class="glitch-text">WELCOME BACK, <span id="welcomeName">PLAYER</span></h1>
+            <p class="sub-text">Select a module to manage your character data.</p>
         </div>
-    </div>
+
+        <div class="menu-grid">
+            <div class="menu-card active" onclick="alert('Stats feature coming soon!')">
+                <div class="menu-icon">📊</div>
+                <h3>CHARACTER STATS</h3>
+                <p>View your IC & OOC progression</p>
+                <span class="status-tag">MAINTENANCE</span>
+            </div>
+
+            <div class="menu-card" onclick="alert('Inventory coming soon!')">
+                <div class="menu-icon">🎒</div>
+                <h3>INVENTORY</h3>
+                <p>Manage items and equipment</p>
+                <span class="status-tag">LOCKED</span>
+            </div>
+
+            <div class="menu-card" onclick="alert('Vehicle list coming soon!')">
+                <div class="menu-icon">🏎️</div>
+                <h3>VEHICLES</h3>
+                <p>Check your garage and insurance</p>
+                <span class="status-tag">LOCKED</span>
+            </div>
+        </div>
+    </main>
 
     <script src="dashboard.js"></script>
 </body>
